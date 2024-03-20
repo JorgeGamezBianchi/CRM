@@ -1,0 +1,506 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Disponible.js")
+<div class="panel panel-primary" id="DISPONIBLE">
+    <div class="panel-heading" id="HeadingDisponible" name="GB">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                DISPONIBLE:
+                @*<label id="qProducto"> Actualzar dinamicamente</label>*@
+                <label id="qProducto"></label>
+                @*<button class="boton-guardar" id="OpenScriptDisponible" title="Abrir script de disponible">
+                        <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                    </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoDisponible" name="GrupoB"></span>
+                    &nbsp;
+                    <label id="lblDisp"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_disp" onchange="check_val_disp()" />
+
+                    <label id="CalificadoDisp" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+
+                    <button class="boton-guardar" id="SaveCalifDisp">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarDisponible" data-toggle="modal" data-target="#modalDisponible" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="SaveDisponible">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse10" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconSix"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse10" class="collapse panel-collapse">
+        <form action="/" method="post">
+
+            <div class="panel-body" id="panelCalificacionDisp">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboDispCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-body" id="panelDisp" hidden>
+                <input type="hidden" id="IdDisponible" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control input-number" disabled id="FolioD" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Telefono Trabajo:</label>
+                                <input type="text" placeholder="Tipo de llamada" class="form-control" id="TelefonoTrabajoD" maxlength="10" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Celular 2:</label>
+                                <input type="text" placeholder="Celular 2" class="form-control" id="Celular2D" maxlength="10" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea Actual:</label>
+                                <input type="text" placeholder="Linea Actual" class="form-control" id="LineaActualD" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea Nueva:</label>
+                                <input type="text" placeholder="Linea Nueva" class="form-control" id="LineaNuevaD" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Incremento:</label>
+                                <input type="text" placeholder="Incremento" class="form-control input-number" id="IncrementoD" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Producto:</label>
+                                <input type="text" placeholder="Producto" class="form-control" id="ProductoD" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">ULT 4 DGT:</label>
+                                <input type="text" placeholder="ULT 4 DGT" class="form-control input-number" id="Ult4DgtD" maxlength="4" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa Anual:</label>
+                                <input type="text" placeholder="Tasa Anual" class="form-control input-number" id="TasaAnualD" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cat:</label>
+                                <input type="text" placeholder="Cat" class="form-control" id="CatD" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha Cat:</label>
+                                <input type="text" placeholder="FechaCat" class="form-control" id="FechaCatD" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto Disponible:</label>
+                                <input type="text" placeholder="Monto Disponible" class="form-control" id="MontoDisponibleD" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tipo De Llamada:</label>
+                                <select class="form-control" id="TipoDeLlamadaD">
+                                    <option value="value">Selecciona tipo de llamada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">GEPC:</label>
+                                <input type="text" placeholder="GEPC" class="form-control" id="GEPCD" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo Disponible:</label>
+                                <select class="form-control" id="PlazoDisponibleD">
+                                    <option value="value">Selecciona un plazo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto Maximo:</label>
+                                <input type="text" placeholder="Monto Maximo" class="form-control input-number" id="MontoMaximoD" />
+                                <label class="text-danger" id="MensajeMontoMaximo"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label>Tipo oferta</label>
+                                <input type="text" placeholder="Tipo de oferta" id="TipoOfertaD" class="form-control" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="datosSuc" hidden>
+                    <div class="col-md-4" id="divFechaSuc">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha visita sucursal:</label>
+                                <input type="text" placeholder="Fecha visita sucursal" class="form-control" id="FechaVicitaSucursalDisp" readonly onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && event.charCode >= 65 && event.charCode <= 90 && event.charCode >= 97 && event.charCode <= 122 )" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="divEstado" >
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione estado:</label>
+                                <select class="form-control" id="EstadoSucursalDisp">
+                                    <option value="value">Seleccione estado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="datosSuc2" hidden>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione municipio:</label>
+                                <select class="form-control" id="MunicipioSucursalDisp">
+                                    <option value="value">Selecciona municipio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Sucursal:</label>
+                                <input type="text" placeholder="Sucursal" class="form-control" id="SucursalDisp" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número sucursal:</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Número sucursal" class="form-control" id="NumeroSucursalDisp" readonly />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="DetalleSucursalDisp">
+                                            <span class="glyphicon glyphicon-zoom-in"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Estatus:</label>
+                                <select class="form-control" id="StatusD">
+                                    <option value="0">Selecciona</option>
+                                    <option value="1">No</option>
+                                    <option value="2">Si</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div id="DisponibleCat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDisponible" tabindex="-1" role="dialog" aria-labelledby="myModalLabelDisponible" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div id="DivCredVal">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="UserName">User name:</label>
+                                        <input type="text" class="form-control" id="UserDisponible" placeholder="Enter your user name" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="Password">Password:</label>
+                                        <input type="password" class="form-control" id="PasswordDisponible" placeholder="Enter your user password" />
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="Password">Status sale:</label>
+                                        <select class="form-control" id="StatusSaleDisponible"></select>
+                                    </div>
+                                </div>*@
+
+                            @*<div class="row">
+                                    <div class="col-lg-12" hidden>
+                                        <label>¿CUENTA CON BANCA ELECTRONICA?</label>
+                                        <select id="cmbPreg1Auten" class="form-control" onchange="ValidarPregunta1()" >
+                                            <option value="0">SELECCIONA</option>
+                                            <option value="1">SI</option>
+                                            <option value="2">NO</option>
+                                        </select>
+                                        <input id="lblResp1" value="" hidden>
+                                    </div>
+                                    <div class="col-lg-12" hidden>
+                                        <label>¿TIENE ADICIONALES?</label>
+                                        <select id="cmbPreg2Auten" class="form-control" onchange="ValidarPregunta2()" disabled>
+                                            <option value="0">SELECCIONA</option>
+                                            <option value="1">SI</option>
+                                            <option value="2">NO</option>
+                                        </select>
+                                        <input id="lblResp2" value="" hidden>
+                                    </div>
+                                </div>*@
+
+
+
+                            <div id="DivAutentica" hidden>
+                                @*<div class="col-md-6">
+                                        <label>¿tú venta es solo de CLI?</label>
+                                        <input type="checkbox" id="chkCli" onclick="CheckCli()" disabled />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Venta en sucursal</label>
+                                        <input type="checkbox" id="chkSucursal" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h6>TIPO</h6>
+                                        <input type="radio" name="tipo" value="Tradicional" onclick="CheckTipo()" checked />
+                                        <label for="Tradicional">Tradicional</label>
+                                        <input type="radio" name="tipo" value="mobil" onclick="CheckTipo()" />
+                                        <label for="mobil">Mobile</label>
+                                    </div>
+                                    <div class="col-md-12" id="DivPlazo">
+                                        <label>Seleccione de nuevo el plazo</label>
+                                        <select id="cmbRepPlazo" class="form-control" onchange="ValidarPlazos()">
+                                            <option value="value">Selecciona un plazo</option>
+                                        </select>
+                                    </div>*@
+                                @*<div class="col-md-12" hidden>
+                                        <label>Código</label>
+                                        <input type="text" id="txtCodigo" class="form-control" disabled />
+                                    </div>*@
+                                <div class="col-md-12" id="DivElec">
+                                    <label>¿CUENTA CON BANCA ELECTRONICA?</label>
+                                    <select id="cmbPreg1Auten" class="form-control" onchange="ValidarPregunta1()" disabled>
+                                        <option value="0">SELECCIONA</option>
+                                        <option value="1">SI</option>
+                                        <option value="2">NO</option>
+                                        @*<option value="3">NO PROPORCIONA DATOS</option>*@
+                                    </select>
+                                    <input id="lblResp1" value="" hidden>
+                                </div>
+                                <div class="col-md-12" id="DivAdi">
+                                    <label>¿TIENE ADICIONALES?</label>
+                                    <select id="cmbPreg2Auten" class="form-control" onchange="ValidarPregunta2()" disabled>
+                                        <option value="0">SELECCIONA</option>
+                                        <option value="1">SI</option>
+                                        <option value="2">NO</option>
+                                        @*<option value="3">NO PROPORCIONA DATOS</option>*@
+                                    </select>
+                                    <label id="TextoNumAdic" hidden style="color:orangered">número de adicionales: </label>
+                                    <label id="lblNumAdic" hidden style="color:orangered"></label>
+                                    <input id="lblResp2" value="" hidden>
+                                </div>
+                                @*<div class="col-md-12" id="DivVenci" hidden>
+                                        <label>¿La fecha de vencimiento se encuentra dentro de los proximon 15 dias?</label>
+                                        <select id="cmbPreg3Auten" class="form-control">
+                                            <option value="SELECCIONA">SELECCIONA</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                            <option value="NO PROPORCIONA DATOS">NO PROPORCIONA DATOS</option>
+                                        </select>
+                                        <input id="lblResp3" value="" hidden>
+                                    </div>*@
+                                @*<div class="col-md-12" id="DivActivo" hidden>
+                                        <label>¿Su plastico se encuentra activo?</label>
+                                        <select id="cmbPreg4Auten" class="form-control">
+                                            <option value="SELECCIONA">SELECCIONA</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                            <option value="NO PROPORCIONA DATOS">NO PROPORCIONA DATOS</option>
+                                        </select>
+                                        <input id="lblResp4" value="" hidden>
+                                    </div>*@
+                                @*<div class="col-md-12" id="DivCorri" hidden>
+                                        <label>¿Sus pagos se encuentran al corriente?</label>
+                                        <select id="cmbPreg5Auten" class="form-control">
+                                            <option value="SELECCIONA">SELECCIONA</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                            <option value="NO PROPORCIONA DATOS">NO PROPORCIONA DATOS</option>
+                                        </select>
+                                        <input id="lblResp5" value="" hidden>
+                                    </div>*@
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <label id="respuestaAuten" style="color:red"></label>
+                <button type="button" class="btn btn-info" id="ValidateDisponible">Continuar</button>
+                <button type="button" class="btn btn-info" id="btnGuardar" disabled onclick="ValidarAutentica()">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalSucursalesDIS">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title">Seleccione una sucursal</h3>
+            </div>
+            <div class="modal-body modal-body1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive">
+                            <thead class="btn-primary">
+                                <tr id="headerTableSucursalDIS">
+                                    <th class="small">SIRH</th>
+                                    <th class="small">NOMBRE DISP</th>
+                                    <th class="small">DIVISION</th>
+                                    <th class="small">DIRECCION</th>
+                                    <th class="small">DOMICILIO</th>
+                                    <th class="small">COLONIA</th>
+                                    <th class="small">CALLE 1</th>
+                                    <th class="small">CALLE 2</th>
+                                    <th class="small">DELEG_MUNIC</th>
+                                    <th class="small">LUN - VIE AP</th>
+                                    <th class="small">LUN - VIE CIE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTableSucDIS"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

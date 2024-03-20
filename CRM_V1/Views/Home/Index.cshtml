@@ -1,0 +1,13 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jquery-ui.js")
+@Scripts.Render("~/Scripts/Manager.js")
+
+<div id="body">
+    <div id="Principal" style="display: none">
+        @Html.Partial("../Home/_Principal")
+    </div>
+
+    <div id="LogIn">
+        @Html.Partial("../Home/Login")
+    </div>
+</div>

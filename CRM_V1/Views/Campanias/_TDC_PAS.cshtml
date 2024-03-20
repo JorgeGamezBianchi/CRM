@@ -1,0 +1,1149 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Tdc_pas.js")
+<div class="panel panel-primary" id="TDCPAS">
+    <div class="panel-heading" id="HeadingPas" name="GA">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                TARJETA DE CREDITO (TDC)
+                @*<button class="boton-guardar" id="OpenScriptTdc" title="Abrir script de tdc">
+                        <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                    </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <button class="boton-guardar" id="TdcAvisoPrivacidad" name="BG" onclick="LlamarAPI_AvisoPrivacidad()">
+                        <span class="glyphicon glyphicon-volume-up" style="color: white" title=""></span>
+                    </button>
+
+                    <span style="color: white" id="EstatusPas" name="GrupoA"></span>
+                    &nbsp;
+                    <label id="lblTDC"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_tdc" onchange="check_val_tdc()"/>
+
+                    <label id="CalificadoTDC" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifTDC">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="GuardarValidarPas" hidden>
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+
+                    <button class="boton-guardar" id="ValidarPas" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="TdcPassGuardar" name="BG">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse4" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconFour"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse4" class="collapse panel-collapse">
+        
+        <form>
+
+            <div class="panel-body" id="panelCalificacionTDC">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboTDCCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-body" id="panelTDC" hidden>
+                <input type="hidden" id="IdTDC" />
+                <ul class="nav nav-tabs nav-justified" id="tabs">
+                    <li id="datosPer" class="active"><a data-toggle="tab" href="#datosCliente"><strong>Datos del cliente</strong></a></li>
+                    <li id="tabInfoCliente"><a data-toggle="tab" href="#informacionCliente"><strong>Información del cliente</strong></a></li>
+                    <li id="tabInfoLaboral"><a data-toggle="tab" href="#informacionLaboral"><strong>Información laboral</strong></a></li>
+                    <li id="tabRefBancarias"><a data-toggle="tab" href="#referenciasBancarias"><strong>Referencias bancarias</strong></a></li>
+                    <li id="tabRefPersonales"><a data-toggle="tab" href="#referenciasPersonales"><strong>Referencias personales</strong></a></li>
+                    <li id="tabSucursal"><a data-toggle="tab" href="#sucursal"><strong>Sucursal</strong></a></li>
+                    <!--<li><a data-toggle="tab" href="#autenticacion" id="tabAutenticacion">Autenticación</a></li>
+            <li><a data-toggle="tab" href="#liberadas">Liberadas</a></li>-->
+                </ul>
+
+                <div class="tab-content">
+                    <div id="datosCliente" class="tab-pane fade in active">
+                        <h3>Datos del cliente</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estatus front TMK:</label>
+                                        <select class="form-control" id="EstatusFrontTMKPas" disabled></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Producto:</label>
+                                        <select class="form-control" id="ProductoPas"></select>
+                                        <!--<input type="text" class="form-control" id="DescripcionPas" readonly hidden />-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Producto preautorizado:</label>
+                                        <input type="text" class="form-control" id="DescripcionPas" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Folio:</label>
+                                        <input type="text" placeholder="Folio" class="form-control input-number" disabled id="FolioPas" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Proporciona curp?</label>
+                                        <select class="form-control" id="OpcCurp">
+                                            <option value="0">Seleccione una opcion</option>
+                                            <option value="1">SI</option>
+                                            <option value="2">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="CampoOpcionCurp"></div>
+
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Comentarios:</label>
+                                        <input type="text" placeholder="Comentarios" class="form-control" id="ComentariosPas" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">LINEA:</label>
+                                        <input type="text" placeholder="LINEA" class="form-control" id="LINEA" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Teléfono de Contacto</label>
+                                        <input type="text" placeholder="TelContactoTDC" class="form-control" id="TelContactoTDC" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="informacionCliente" class="tab-pane fade">
+                        <h3>Información del cliente</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">País de nacimiento:</label>
+                                        <select class="form-control" id="PaisNacimientoPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Entidad federativa:</label>
+                                        <select class="form-control" id="EntidadFederativaPas">
+                                            <option value="0">Selecciona entidad federativa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">País nacionalidad:</label>
+                                        <select class="form-control" id="PaisNacionalidadPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Genero:</label>
+                                        <select class="form-control" id="GeneroPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estado civil:</label>
+                                        <select class="form-control" id="EstadoCivilPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Escolaridad:</label>
+                                        <select class="form-control" id="EscolaridadPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Número dependientes:</label>
+                                        <input type="text" placeholder="Número dependientes" class="form-control input-number" id="NumeroDependientesPas" maxlength="2" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de vivienda:</label>
+                                        <select class="form-control" id="TipoViviendaPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Años residencia:</label>
+                                        <input type="text" placeholder="Años residencia" id="AniosResidenciaPas" class="form-control input-number" maxlength="2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Email:</label>
+                                        <input type="email" placeholder="Correo electronico" class="form-control" id="EmailPas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Teléfono:</label>
+                                        <input type="email" placeholder="Número de Teléfono" class="form-control" id="TdcTelefono" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Celular:</label>
+                                        <input type="email" placeholder="Número Celular" class="form-control" id="TdcCelular" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="informacionLaboral" class="tab-pane fade">
+                        <h3>Información laboral</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Nombre emp:</label>
+                                        <input type="text" placeholder="Nombre emp" class="form-control" id="NombrePas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Calle emp:</label>
+                                        <input type="text" placeholder="Calle emp" class="form-control" id="CallePas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Número interior emp:</label>
+                                        <input type="text" placeholder="Número interior emp" class="form-control input-number" id="NumeroInteriorPas" maxlength="7" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Número exterior emp:</label>
+                                        <input type="text" placeholder="Número exterior emp" class="form-control input-number" id="NumeroExteriorPas" maxlength="7" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Código postal emp:</label>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Código postal emp" class="form-control input-number" id="CodigoPostalPas" maxlength="6" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info" type="button" id="BuscarDireccionTDC">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estado emp:</label>
+                                        <select class="form-control" id="EstadoEmpPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Delegación emp:</label>
+                                        <select class="form-control" id="DelegacionPas">
+                                            <option value="0">Seleccione delegación</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Colonia emp:</label>
+                                        <select class="form-control" id="ColoniaPas">
+                                            <option value="0">Seleccione colonia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Actividad:</label>
+                                        <select class="form-control" id="ActividadPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ocupación:</label>
+                                        <select class="form-control" id="OcupacionPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de emp:</label>
+                                        <select class="form-control" id="TipoDeEmpPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Teléfono emp:</label>
+                                        <input type="text" placeholder="Teléfono emp" class="form-control" id="TelefonoEmpPas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Numero extension:</label>
+                                        <input type="text" placeholder="Numero de extensión" class="form-control" id="ExtPas" maxlength="5" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Antigüedad años:</label>
+                                        <input type="text" placeholder="Antigüedad años" class="form-control input-number" id="AntiguedadAnosPas" maxlength="2" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Antigüedad meses:</label>
+                                        <input type="text" placeholder="Antigüedad meses" class="form-control input-number" id="AntiguedadMesesPas" maxlength="2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ingreso mensual:</label>
+                                        <input type="text" placeholder="Ingreso mensual" class="form-control" id="IngresoMensualPas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Comp ingresos:</label>
+                                        <select class="form-control" id="CompIngresosPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de identificacion:</label>
+                                        <select class="form-control" id="TipoIdentificacionPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Comprobante de domicilio:</label>
+                                        <select class="form-control" id="ComprobanteDomicilioPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="referenciasBancarias" class="tab-pane fade">
+                        <h3>Referencias bancarias</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Institución 1:</label>
+                                        <select class="form-control" id="Institucion1Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de cuenta 1:</label>
+                                        <select class="form-control" id="TipoDeCuenta1Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ultimos 4 digitos 1:</label>
+                                        <input type="text" placeholder="Ultimos 4 digitos 1" class="form-control input-number" id="Terminacion1Pas" maxlength="4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Institución 2:</label>
+                                        <select class="form-control" id="Institucion2Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de cuenta 2:</label>
+                                        <select class="form-control" id="TipoDeCuenta2Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ultimos 4 digitos 2:</label>
+                                        <input type="text" placeholder="Ultimos 4 digitos 2" class="form-control input-number" id="Terminacion2Pas" maxlength="4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Institución 3:</label>
+                                        <select class="form-control" id="Institucion3Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de cuenta 3:</label>
+                                        <select class="form-control" id="TipoDeCuenta3Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ultimos 4 digitos 3:</label>
+                                        <input type="text" placeholder="Ultimos 4 digitos 3" class="form-control input-number" id="Terminacion3Pas" maxlength="4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="referenciasPersonales" class="tab-pane fade">
+                        <h3>Referencias personales</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Apellido paterno referencia 1:</label>
+                                        <input type="text" class="form-control" id="PaternoRef1Pas" placeholder="Apellido paterno referencia 1" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Apellido materno referencia 1:</label>
+                                        <input type="text" placeholder="Apellido materno referencia 1" class="form-control" id="MaternoRef1Pas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Nombre referencia 1:</label>
+                                        <input type="text" placeholder="Nombre referencia 1" class="form-control" id="NombreRef1Pas" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Parentesco referencia 1:</label>
+                                        <select class="form-control" id="ParentescoRef1Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Telefono referencia 1:</label>
+                                        <input type="text" placeholder="Telefono referencia 1" class="form-control input-number" id="TelefonoRef1Pas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Extension referencia 1:</label>
+                                        <input type="text" placeholder="Extension referencia 1" class="form-control input-number" id="ExtRef1Pas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Apellido paterno referencia 2:</label>
+                                        <input type="text" class="form-control" id="PaternoRef2Pas" placeholder="Apellido paterno referencia 2" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Apellido materno referencia 2:</label>
+                                        <input type="text" placeholder="Apellido materno referencia 2" class="form-control" id="MaternoRef2Pas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Nombre referencia 2:</label>
+                                        <input type="text" placeholder="Nombre referencia 2" class="form-control" id="NombreRef2Pas" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Parentesco referencia 2:</label>
+                                        <select class="form-control" id="ParentescoRef2Pas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Telefono referencia 2:</label>
+                                        <input type="text" placeholder="Telefono referencia 2" class="form-control input-number" id="TelefonoRef2Pas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Extension referencia 2:</label>
+                                        <input type="text" placeholder="Extension referencia 2" class="form-control input-number" id="ExtRef2Pas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sucursal" class="tab-pane fade">
+
+                        <h3>Sucursal</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Fecha vicita sucursal:</label>
+                                        <input type="text" placeholder="Fecha vicita sucursal" class="form-control" id="FechaVicitaSucursalPas" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estado:</label>
+                                        <select class="form-control" id="EstadoSucursal">
+                                            <option value="value">Selecciona estados</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Municipio:</label>
+                                        <select class="form-control" id="MunicipioSucursal">
+                                            <option value="value">Selecciona municipio</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Division:</label>
+                                        <input type="text" placeholder="Division" class="form-control" id="DivisionPas" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Regional:</label>
+                                        <input type="text" placeholder="Regional" class="form-control" id="RegionalPas" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Número sucursal:</label>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Número sucursal" class="form-control input-number" id="NumeroSucursalPas" disabled />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info" type="button" id="DetalleSucursalTDC">
+                                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Sucursal:</label>
+                                        <input type="text" placeholder="Sucursal" class="form-control input-number" id="SucursalPas" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="procesos" class="tab-pane fade">
+                        <h3>Procesos</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Folio ECS:</label>
+                                        <input type="text" placeholder="FOlio ECS" class="form-control input-number" id="FolioECSPas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Referencia buró:</label>
+                                        <select class="form-control" id="RefBuroPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estatus autenticación:</label>
+                                        <select class="form-control" id="EstatusAutenticacionPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estatus front TMK:</label>
+                                        <select class="form-control" id="EstatusFrontTMKPas2"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Causa declinación:</label>
+                                        <input type="text" placeholder="Causa declinación" class="form-control" id="CausaDeclinacionPas" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estatus declinación:</label>
+                                        <select class="form-control" id="EstatusDeclinacionPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Teléfono proc:</label>
+                                        <input type="text" placeholder="Teléfono proc" class="form-control input-number" id="TelefonoProcPas" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">País de nacionalidad:</label>
+                                        <select class="form-control" id="PaisNacionalidadPasProcesos"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de persona:</label>
+                                        <select class="form-control" id="TipoDePersonaPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Tipo de tarjeta:</label>
+                                        <select class="form-control" id="TipoDeTargetaPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12" id="TargetaBancaria">
+                                        <label class="control-label">Tipo de tarjeta bancaria:</label>
+                                        <select class="form-control" id="TipoDeTargetaBancariaPas"></select>
+                                    </div>
+
+                                    <div class="col-md-12" id="TargetaDepartamental" style="display: none">
+                                        <label class="control-label">Tipo de tarjeta departamental:</label>
+                                        <select class="form-control" id="TipoTargDeparPas"></select>
+                                    </div>
+
+                                    <div class="col-md-12" id="TargetaComercial" style="display: none">
+                                        <label class="control-label">Tipo de targeta comercial:</label>
+                                        <select class="form-control" id="TipoDeTargetaComercialPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4" id="DivTDC">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Sin TDC:</label>
+                                        <select class="form-control" id="SinTDCPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12" id="RecibosNomina" disa>
+                                        <label class="control-label">Tipos recibos nómina:</label>
+                                        <select class="form-control" id="TiposRecibosNominaPas"></select>
+                                    </div>
+                                    <div class="col-md-12" id="EstadoCuenta" style="display: none">
+                                        <label class="control-label">Tipo estado cuenta:</label>
+                                        <select class="form-control" id="TipoDeEstadoCuentaPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Línea crédito:</label>
+                                        <select class="form-control" id="LineaCreditoPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Antigüedad:</label>
+                                        <select class="form-control" id="AntiguedadPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Ingresos:</label>
+                                        <select class="form-control" id="IngresosPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Buro:</label>
+                                        <select class="form-control" id="BuroPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Estatus final:</label>
+                                        <select class="form-control" id="EstatusFinalPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Proceso pendiente:</label>
+                                        <select class="form-control" id="ProcesoPendientePas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Canceladas:</label>
+                                        <select class="form-control" id="CanceladosPas"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Comentarios proc:</label>
+                                        <input type="text" placeholder="Comentarios proc" class="form-control" id="ComentariosProcPas" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div id="autenticacion" class="tab-pane fade">
+                <h3>Autenticación</h3>
+                <div class="row">
+
+                </div>
+            </div>-->
+                    <!--<div id="liberadas" class="tab-pane fade">
+                <h3>Liberadas</h3>
+                <div class="row"></div>
+            </div>-->
+                </div>
+
+
+                <div style="display: none">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <div id="TdcCat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right" id="Checks">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalSucursalesTDC">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title">Seleccione una sucursal</h3>
+            </div>
+            <div class="modal-body modal-body1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive table-hover table-condensed">
+                            <thead class="btn-primary">
+                                <tr id="headerTableSucursalTDC">
+                                    <th class="small">SIRH</th>
+                                    <th class="small">NOMBRE DISP</th>
+                                    <th class="small">DIVISION</th>
+                                    <th class="small">DIRECCION</th>
+                                    <th class="small">DOMICILIO</th>
+                                    <th class="small">COLONIA</th>
+                                    <th class="small">CALLE 1</th>
+                                    <th class="small">CALLE 2</th>
+                                    <th class="small">DELEG_MUNIC</th>
+                                    <th class="small">LUN - VIE AP</th>
+                                    <th class="small">LUN - VIE CIE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTableSucTDC"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalTdc" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBalcon" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserTdc" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordTdc" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidateTdc" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Aviso -->
+<div id="ModalAvisoTDC" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="TituloModal_AvisoTdcOK">REPRODUCIENDO AUDIO</h4>
+                <h4 class="modal-title" id="TituloModal_AvisoTdcNOT">AVISO</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div id="DivAVisoOK">
+                    <label style="color:red; font-size:20px" id="lblTiempoAviso_TDC">00:00</label>
+                    <p style="color:forestgreen">
+                        Reproduciendo audio de Aviso de Privacidad
+                    </p>
+                </div>
+                <div id="DivAVisoNOT" hidden>
+                    <p style="color:red; font-size:40px">
+                        Hubo un error al reproducir el Aviso de Privacidad, recuerda que debes decirlo de viva voz cuando esto ocurre!
+                    </p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var totalTime = 16;
+    function updateClock() {
+        if (totalTime < 10) {
+            document.getElementById('lblTiempoAviso_TDC').innerHTML = "00:0" + totalTime;
+        } else {
+            document.getElementById('lblTiempoAviso_TDC').innerHTML = "00:" + totalTime;
+        }
+        if (totalTime == 0) {
+            console.log('Final');
+            $("#ModalAvisoTDC").modal("hide");
+            totalTime = 16;
+        } else {
+            totalTime -= 1;
+            setTimeout("updateClock()", 1000);
+        }
+    }
+</script>

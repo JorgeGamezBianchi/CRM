@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+@Styles.Render("~/Content/login.css")
+<div class="background">
+
+    <div class="content">
+
+        <h3 class="text-title">Iniciar sesión</h3>
+        <br />
+
+        <form>
+            <input type="text" name="UserName" value="" class="inputs" placeholder="Enter your user name" id="UserName" />
+            <br />
+            <span class="text-title" id="errorUserName"></span>
+            <br />
+
+            <input type="password" name="Password" value="" class="inputs" placeholder="Enter your password" id="Password" />
+            <br />
+            <span class="text-title" id="errorPassword"></span>
+            <br />
+            <input type="button" value="Iniciar sesión" class="primayColor" id="ingresar" />
+        </form>
+
+    </div>
+
+</div>

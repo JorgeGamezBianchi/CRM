@@ -1,0 +1,451 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Styles.Render("~/Content/Personalizado.css")
+@Scripts.Render("~/Scripts/Campanias/Cpc.js")
+<div class="panel panel-primary" id="CPC">
+
+    <div class="panel-heading" id="HeadingCpc" name="GB">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                CPC
+                @*<button class="boton-guardar" id="OpenScriptCpc" title="Abrir script de cpc" hidden>
+                        <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                    </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoCpc" name="GrupoB"></span>
+                    &nbsp;
+                    <label id="lblCalifCPC"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_cpc" onchange="check_val_cpc()" />
+
+                    <label id="CalificadoCPC" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifCPC">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarCpc" data-toggle="modal" data-target="#modalCpc" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="SaveCpc">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse3" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconThree"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapse3" class="collapse panel-collapse">
+        <form action="/" method="post">
+
+            <div class="panel-body" id="panelCalificacionCPC">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboCPCCalif">
+                                    <option value="0" selected>Seleccione...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelCPC" hidden>
+                <input type="hidden" id="IdCpc" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control input-number" disabled id="FolioCPC" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto promesa:</label>
+                                <input type="text" placeholder="Monto promesa" class="form-control input-number" id="MontoPromesaCPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa:</label>
+                                <input type="text" placeholder="Tasa" class="form-control" id="TasaCPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo:</label>
+                                <input type="text" placeholder="Plazo" class="form-control input-number" id="PlazoCPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto máximo 24:</label>
+                                <input type="text" placeholder="Monto máximo 24" class="form-control input-number" id="MontoMaximo24CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 24:</label>
+                                <input type="text" placeholder="Pago 24" class="form-control input-number" id="Pago24CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo:</label>
+                                <input type="text" value="36" class="form-control input-number" id="Plazo36CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto máximo 36:</label>
+                                <input type="text" placeholder="Monto máximo 36" class="form-control input-number" id="MontoMaximo36CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 36:</label>
+                                <input type="text" placeholder="Pago 36" class="form-control input-number" id="Pago36CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo:</label>
+                                <input type="text" value="48" class="form-control input-number" id="Plazo48CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto máximo 48:</label>
+                                <input type="text" placeholder="Monto máximo 48" class="form-control" id="MontoMaximo48CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 48:</label>
+                                <input type="text" placeholder="Pago 48" class="form-control" id="Pago48CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo:</label>
+                                <input type="text" value="60" class="form-control input-number" id="Plazo60CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    @*(1) Mantenimiento 04 marzo 2019*@
+                    @*Cambiar desde base de datos*@
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto máximo 60:</label>
+                                <input type="text" placeholder="Monto máximo 12" class="form-control input-number" id="MontoMaximo60CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 60:</label>
+                                <input type="text" placeholder="Pago 12" class="form-control input-number" id="Pago60CPC" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label"> CAT:</label>
+                                <input type="text" placeholder="CAT" class="form-control input-number" id="CAT" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha Cat:</label>
+                                <input type="text" placeholder="FechaCat" class="form-control" id="FechaCatC" readonly disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione tipo de venta:</label>
+                                <select class="form-control" id="selectVenta" onchange="CambiarTipoVenta()">
+                                    <option selected">Seleccione...</option>
+                                    <option value="App">App</option>
+                                    <option value="Digital">Digital</option>
+                                    <option value="Sucursal">Sucursal</option>
+                                    <option value="Venta sin cita">Venta sin cita</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="divFechaSuc" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha visita sucursal:</label>
+                                <input type="text" placeholder="Fecha vicita sucursal" class="form-control" id="FechaVicitaSucursalCPC" readonly onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && event.charCode >= 65 && event.charCode <= 90 && event.charCode >= 97 && event.charCode <= 122 )" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="divEstado" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione estado:</label>
+                                <select class="form-control" id="EstadoSucursalCPC">
+                                    <option value="value">Seleccione estado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" hidden id="divCompletaSuc1">
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione municipio:</label>
+                                <select class="form-control" id="MunicipioSucursalCPC">
+                                    <option value="value">Selecciona municipio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Sucursal:</label>
+                                <input type="text" placeholder="Sucursal" class="form-control" id="SucursalCPC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número sucursal:</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Número sucursal" class="form-control" id="NumeroSucursalCPC" readonly />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="DetalleSucursalCPC">
+                                            <span class="glyphicon glyphicon-zoom-in"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-4" id="divRegional" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Regional</label>
+                                <input type="text" placeholder="Regional" class="form-control" id="RegionalCPC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="divDivision" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Divisón</label>
+                                <input type="text" placeholder="Divisón" class="form-control" id="DivisionCPC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="divOferta" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Oferta</label>
+                                <input type="text" placeholder="Oferta" class="form-control" id="OfertaCPC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div id="CpcCat"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCpc" tabindex="-1" role="dialog" aria-labelledby="myModalLabelCpc" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserCpc" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordCpc" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Fecha Nacimiento:</label>
+                                    <input type="date" class="form-control" id="FechaNacCPC" onchange="ValidaFechaNac2()" />
+                                    @*<button id="validarFecha" onclick="ValidaFechaNac()">Validar</button>*@
+                                    <label id="lblFecha" style="color:orangered"></label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Status sale:</label>
+                                    <select class="form-control" id="StatusSaleCpc" onchange="habilitaCombo()"></select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Calificacion:</label>
+                                    <select class="form-control" id="cmbCPCCalif" disabled></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidateCpc" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalSucursalesCPC">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title">Seleccione una sucursal</h3>
+            </div>
+            <div class="modal-body modal-body1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive">
+                            <thead class="btn-primary">
+                                <tr id="headerTableSucursalCPC">
+                                    <th class="small">SIRH</th>
+                                    <th class="small">NOMBRE DISP</th>
+                                    <th class="small">DIVISION</th>
+                                    <th class="small">DIRECCION</th>
+                                    <th class="small">DOMICILIO</th>
+                                    <th class="small">COLONIA</th>
+                                    <th class="small">CALLE 1</th>
+                                    <th class="small">CALLE 2</th>
+                                    <th class="small">DELEG_MUNIC</th>
+                                    <th class="small">LUN - VIE AP</th>
+                                    <th class="small">LUN - VIE CIE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTableSucCPC"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

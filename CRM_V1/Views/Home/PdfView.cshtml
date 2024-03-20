@@ -1,0 +1,51 @@
+﻿@Scripts.Render("~/Scripts/PDFObject.js")
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Script de @ViewBag.Id</title>
+    <style>
+        #PdfContainer{
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="PdfContainer"></div>
+    <script>
+        //var hostInit = "/AppCRM";
+        var hostInit = "";
+        var url = window.location.href;
+        var campania = url.split('/');
+        switch (campania[campania.length-1]) {
+            case 'BALCON':
+                PDFObject.embed(hostInit+"/PDFS/ScriptBALCON.pdf", "#PdfContainer");
+                break;
+            case 'CLI':
+                PDFObject.embed(hostInit+"/PDFS/ScriptCLI.pdf", "#PdfContainer");
+                break;
+            case 'CNC':
+                PDFObject.embed(hostInit+"/PDFS/ScriptCNC.pdf", "#PdfContainer");
+                break;
+            case 'CPC':
+                PDFObject.embed(hostInit+"/PDFS/ScriptCPC.pdf", "#PdfContainer");
+                break;
+            case 'DISPONIBLE':
+                PDFObject.embed(hostInit+"/PDFS/ScriptDISPONIBLE.pdf", "#PdfContainer");
+                break;
+            case 'PAGARE':
+                PDFObject.embed(hostInit+"/PDFS/ScriptPAGARE.pdf", "#PdfContainer");
+                break;
+            case 'PYME':
+                PDFObject.embed(hostInit+"/PDFS/ScriptPYME.pdf", "#PdfContainer");
+                break;
+            case 'REDISPOSICION':
+                PDFObject.embed(hostInit+"/PDFS/ScriptREDISPOSICION.pdf", "#PdfContainer");
+                break;
+            case 'TDC':
+                PDFObject.embed(hostInit+"/PDFS/ScriptTDC.pdf", "#PdfContainer");
+                break;
+        }
+    </script>
+</body>
+</html>

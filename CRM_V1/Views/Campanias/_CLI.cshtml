@@ -1,0 +1,253 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Cli.js")
+<div class="panel panel-primary" id="CLI">
+    <div class="panel-heading" id="HeadingCli" name="GA">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                CLI
+                @*<button class="boton-guardar" id="OpenScriptCli" title="Abrir script de cli">
+                        <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                    </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoCli" name="GrupoA"></span>
+                    &nbsp;
+                    <label id="lblCalifCLI"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_cli" onchange="check_val_Cli()" />
+
+                    <label id="CalificadoCLI" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifCLI">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarCli" data-toggle="modal" data-target="#modalCli" hidden>
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="SaveCli">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse8" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconEight"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse8" class="collapse panel-collapse">
+        <form action="/" method="post">
+
+            <div class="panel-body" id="panelCalificacionCLI">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboCLICalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelCLI" hidden>
+                <input type="hidden" id="IdCli" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control" disabled id="FolioCli" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número de targeta:</label>
+                                <input type="text" placeholder="Número de targeta" class="form-control input-number" id="NumeroTargetaCli" maxlength="4" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Producto:</label>
+                                <input type="text" placeholder="producto" class="form-control" id="ProductoCli" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea actual:</label>
+                                <input type="text" placeholder="Línea actual" class="form-control input-number" id="LineaActualCli" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea incremento:</label>
+                                <input type="email" placeholder="Línea incremento" class="form-control input-number" id="LineaIncrementoCli" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea nueva total:</label>
+                                <input type="text" placeholder="Línea nueva total" class="form-control input-number" id="LineaNuevaTotalCli" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" hidden>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Banca electrónica:</label>
+                                <input type="text" placeholder="Banca electrónica" class="form-control input-number" id="BancaElectronicaCli" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tiene adicionales:</label>
+                                <input type="text" placeholder="Tiene adicionales" class="form-control" id="TieneAdicionalesCli" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Autenticación:</label>
+                                <input type="text" placeholder="Autenticación" class="form-control" id="AutenticacionCli" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" hidden>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plaza:</label>
+                                <input type="text" placeholder="Plaza" class="form-control input-number" id="PlazaCli" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Piso:</label>
+                                <input type="text" placeholder="Piso" class="form-control input-number" id="PisoCli" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cliente desde:</label>
+                                <input type="text" placeholder="Cliente desde" class="form-control" id="ClienteDesdeCli" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div id="CliCat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCli" tabindex="-1" role="dialog" aria-labelledby="myModalLabelCli" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Autenticación y Validación</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserCli" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordCli" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            @*<div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="Password">Status sale:</label>
+                                        <select class="form-control" id="StatusSaleCli"></select>
+                                    </div>
+                                </div>*@
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label>¿CUENTA CON BANCA ELECTRÓNICA?</label>
+                        <select id="cmbBancaE" class="form-control" onchange="PreguntaBancaElec()">
+                            <option value="0">SELECCIONE</option>
+                            <option value="1">SI</option>
+                            <option value="2">NO</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12">
+                        <label>¿TIENE ADICIONALES?</label>
+                        <select id="cmbAdicionales" class="form-control" onchange="PreguntaAdicionales()" disabled>
+                            <option value="0">SELECCIONE</option>
+                            <option value="1">SI</option>
+                            <option value="2">NO</option>
+                        </select>
+                        @*<div class="col-md-6">
+                            <label style="color:orangered">Número de adicionales</label>
+                            <label id="NumAdic" style="color:orangered"></label>
+                        </div>*@
+                    </div>
+                    <div class="col-lg-12" hidden>
+                        <label>CLIENTE DESDE</label>
+                        <input id="txtClienteDesde" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <label id="lblAutentica"></label>
+                <button type="button" class="btn btn-info" id="ValidateCli" data-dismiss="modal" disabled>Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

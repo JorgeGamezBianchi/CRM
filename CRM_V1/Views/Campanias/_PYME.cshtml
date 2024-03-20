@@ -1,0 +1,485 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Pyme.js")
+<div class="panel panel-primary" id="PYME">
+    <div class="panel-heading" id="HeadingPyme">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                PYME
+                @*<button class="boton-guardar" id="OpenScriptPyme" title="Abrir script de pyme" hidden>
+                    <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoPyme"></span>
+                    &nbsp;
+                    <label id="lblPyme"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_pyme" onchange="check_val_pyme"/>
+
+                    <label id="CalificadoPyme" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifPyme">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarPyme" data-toggle="modal" data-target="#modalPyme" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+
+                    <button class="boton-guardar" id="SavePyme">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+
+                    <a data-toggle="collapse" href="#collapse1" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconOne"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse1" class="collapse panel-collapse">
+        <form>
+
+            <div class="panel-body" id="panelCalificacionPyme">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboPymeCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelPyme" hidden>
+                <input type="hidden" id="IdPyme" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control input-number" id="FolioPyme" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea 36:</label>
+                                <input type="text" placeholder="Línea 36" class="form-control input-number" id="Linea36Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa 36:</label>
+                                <input type="text" placeholder="Tasa 36" class="form-control" id="Tasa36Pyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 36:</label>
+                                <input type="text" placeholder="Pago 36" class="form-control input-number" id="Pago36Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea 48:</label>
+                                <input type="text" placeholder="Linea 48" class="form-control input-number" id="Linea48Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa 48:</label>
+                                <input type="text" placeholder="Tasa 48" class="form-control" id="Tasa48Pyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 48:</label>
+                                <input type="text" placeholder="Pago 48" class="form-control input-number" id="Pago48Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea 60:</label>
+                                <input type="text" placeholder="Linea 60" class="form-control input-number" id="Linea60Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa 60:</label>
+                                <input type="text" placeholder="tasa 60" class="form-control" id="Tasa60Pyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 60:</label>
+                                <input type="text" placeholder="Pago 60" class="form-control input-number" id="Pago60Pyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo:</label>
+                                <input type="text" placeholder="Plazo" class="form-control input-number" id="PlazoPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto promesa:</label>
+                                <input type="text" placeholder="Monto promesa" class="form-control input-number" id="MontoPromesaPyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha vicita sucursal:</label>
+                                <input type="text" placeholder="Fecha vicita sucursal" class="form-control" id="FechaVictimaSucursalPyme" readonly onchange="document.getElementById('FechaVictimaSucursalPyme').disabled = true;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Sucusal:</label>
+                                <input type="text" placeholder="Sucursal" class="form-control" id="SucursalPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número sucursal:</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Número sucursal" class="form-control" id="NumeroSucursalPyme" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="DetalleSucursalPYME">
+                                            <span class="glyphicon glyphicon-zoom-in"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea actual:</label>
+                                <input type="text" placeholder="Linea actual" class="form-control input-number" id="LineaActualPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea CLI:</label>
+                                <input type="text" placeholder="Linea CLI" class="form-control input-number" id="LineaCLIPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cat amortizable:</label>
+                                <input type="text" placeholder="Cat amortizable" class="form-control" id="CatAmortizablePyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa amortizable:</label>
+                                <input type="text" placeholder="Tasa amortizable" class="form-control input-number" id="TasaAmortizablePyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago men amortizable:</label>
+                                <input type="text" placeholder="Pago men amortizable" class="form-control" id="PagoMensualAmortizablePyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea revolvente:</label>
+                                <input type="text" placeholder="Linea revolvente" class="form-control input-number" id="LineaRevolventePyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea total:</label>
+                                <input type="text" placeholder="Linea total" class="form-control" id="LineaTotalPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cat revolvente:</label>
+                                <input type="text" placeholder="Cat revolvente" class="form-control" id="CatRevolventePyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Linea amortizable:</label>
+                                <input type="text" placeholder="Linea amortizable" class="form-control input-number" id="LineaAmortizablePyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa revolvente:</label>
+                                <input type="text" placeholder="Tasa revolvente" class="form-control" id="TasaRevolventePyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Division:</label>
+                                <input type="text" placeholder="Division" class="form-control" id="DivisionPyme" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Regional:</label>
+                                <input type="text" placeholder="Regional" class="form-control" id="RegionalPyme" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione tipo de venta:</label>
+                                <select class="form-control" id="selectVentaCNC" onchange="CambiarTipoVentaCNC()">
+                                    <option selected">Seleccione...</option>
+                                    <option value="App">App</option>
+                                    <option value="Digital">Digital</option>
+                                    <option value="Sucursal">Sucursal</option>
+                                    <option value="Venta sin cita">Venta sin cita</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="visitaSucursalCNC" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha visita sucursal:</label>
+                                <input type="text" placeholder="Fecha vicita sucursal" class="form-control" id="FechaVisitaSucursalCNC" readonly onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && event.charCode >= 65 && event.charCode <= 90 && event.charCode >= 97 && event.charCode <= 122 )" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="divEstadoCNC" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione estado:</label>
+                                <select class="form-control" id="EstadoSucursalSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="divMunicipioCNC" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione municipio:</label>
+                                <select class="form-control" id="MunicipioSucursalSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" id="divSucursal2CNC" hidden>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Sucursal:</label>
+                                <input type="text" placeholder="Sucursal" class="form-control" id="SucursalCNC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número sucursal:</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Número sucursal" class="form-control" id="NumeroSucursalCNC" readonly />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="DetalleSucursalCNC">
+                                            <span class="glyphicon glyphicon-zoom-in"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">División:</label>
+                                <input type="text" placeholder="División" class="form-control" id="DivisionCNC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Regional:</label>
+                                <input type="text" placeholder="Regional" class="form-control" id="RegionalCNC" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div id="CncCat"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div id="PymeCat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPyme" tabindex="-1" role="dialog" aria-labelledby="myModalLabelPyme" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserPyme" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordPyme" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Status sale:</label>
+                                    <select class="form-control" id="StatusSalePyme"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidatePyme" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

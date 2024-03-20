@@ -1,0 +1,568 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Balcon.js")
+@Scripts.Render("~/Scripts/jquery-ui.js")
+<div class="panel panel-primary" id="BALCON">
+    <div class="panel-heading" id="HeadingBalcon" name="GB">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                BALCON
+                @*<button class="boton-guardar" id="OpenScriptBalcon" title="Abrir script de balcon" hidden>
+                        <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                    </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoBalcon" name="GrupoB"></span>
+                    &nbsp;
+                    <label id="lblCalifBalcon"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_bal" name="check" onchange="check_validacion()"/>
+                    
+                    <label id="Calificado" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalif" oncl>
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarBalcon" data-toggle="modal" data-target="#modalBalcon" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="SaveBalcon" hidden>
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    
+                    <a data-toggle="collapse" href="#collapse9" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconNine"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse9" class="collapse panel-collapse">
+        <form action="/" method="post" id="frmBALCON">
+
+            <div class="panel-body" id="panelCalificacion">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboBalconCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelBALCON" hidden>
+                <input type="hidden" id="IdBalcon" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control input-number" disabled id="FolioBalcon" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Producto:</label>
+                                <input type="text" placeholder="Producto" class="form-control" id="ProductoBalcon" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Ult 4 dgt:</label>
+                                <input type="text" placeholder="Ult 4 dgt" class="form-control input-number" id="Ult4DgtBalcon" maxlength="4" />
+
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Tel trabajo:</label>
+                            <input type="text" placeholder="Tel trabajo" class="form-control input-number" id="TelTrabajoBalcon" maxlength="10" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Celular 2:</label>
+                            <input type="text" placeholder="Celular 2" class="form-control input-number" id="Celular2Balcon" maxlength="10" />
+                        </div>
+                    </div>
+                </div>*@
+                </div>
+
+                <div class="row">
+                    @*<div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Linea actual:</label>
+                            <input type="text" placeholder="Linea actual" class="form-control" id="LineaActualBalcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Línea nueva:</label>
+                            <input type="text" placeholder="Línea nueva" class="form-control" id="LineaNuevaBalcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Incremento:</label>
+                            <input type="text" placeholder="Incremento" class="form-control" id="IncrementoBalcon" />
+                        </div>
+                    </div>
+                </div>*@
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa anual:</label>
+                                <input type="text" placeholder="Tasa anual" class="form-control" id="TasaAnualBalcon" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cat:</label>
+                                <input type="text" placeholder="Cat" class="form-control" id="CatBalcon" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha cat:</label>
+                                @*<div class="form-control" id="FechaCatBalcon"></div>*@
+                                <input type="text" placeholder="Fecha cat" class="form-control" id="FechaCatBalcon" readonly disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @*<div class="col-md-4">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="control-label">Monto máximo:</label>
+                        <input type="text" placeholder="Monto máximo" class="form-control" id="MontoMaximoBalcon" />
+                    </div>
+                </div>
+            </div>*@
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto máximo:</label>
+                                <input type="text" placeholder="Monto máximo" class="form-control" id="MontoMaximoBalcon" readonly />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione tipo de venta:</label>
+                                <select class="form-control" id="selectVentaB" onchange="sucu()">
+                                    <option value="0" selected">Seleccione...</option>
+                                    <option value="1">App</option>
+                                    <option value="2">Sucursal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="visitaSucursalB" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Fecha visita sucursal:</label>
+                                <input type="text" placeholder="Fecha visita sucursal" class="form-control" id="FechaVicitaSucursalBN" readonly onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && event.charCode >= 65 && event.charCode <= 90 && event.charCode >= 97 && event.charCode <= 122 )" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="divSucursal2B" hidden>
+                    <div class="col-md-4" id="divEstadoB" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione estado:</label>
+                                <select class="form-control" id="EstadoSucursalBN"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="divMunicipioB" hidden>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione municipio:</label>
+                                <select class="form-control" id="MunicipioSucursalBN"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Sucursal:</label>
+                                <input type="text" placeholder="Sucursal" class="form-control" id="SucursalBN" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row" id="divSucursal3B" hidden>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Número sucursal:</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Número sucursal" class="form-control" id="NumeroSucursalBN" readonly />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="DetalleSucursalB">
+                                            <span class="glyphicon glyphicon-zoom-in"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-4">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="control-label">Gepc:</label>
+                        <input type="text" placeholder="Gepc" class="form-control" id="GepcBalcon" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="control-label">Plazo 1:</label>
+                        <input type="text" placeholder="Plazo 1" class="form-control input-number" id="Plazo1Balcon" />
+                        <select class="form-control" id="Plazo1Balcon">
+                            <option value="value">Selecciona un plazo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>*@
+
+                @*<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Nombre banco 1:</label>
+                            <input type="text" placeholder="Nombre banco 1" class="form-control input-number" id="NombreBanco1Balcon" />
+                            <select class="form-control" id="NombreBanco1Balcon">
+                                <option value="value">Selecciona un banco</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Cant transferencia 1:</label>
+                            <input type="text" placeholder="CantTransferencia1" class="form-control" id="CantTransferencia1Balcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Plazo 2:</label>
+                            <input type="text" placeholder="Plazo 2" class="form-control input-number" id="Plazo2Balcon" />
+                            <select class="form-control" id="Plazo2Balcon">
+                                <option value="value">Selecciona un plazo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Nombre banco 2:</label>
+                            <input type="text" placeholder="Nombre banco 2" class="form-control input-number" id="NombreBanco2Balcon" />
+                            <select class="form-control" id="NombreBanco2Balcon">
+                                <option value="value">Selecciona un banco</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Cant transferencia 2:</label>
+                            <input type="text" placeholder="Cant Transferencia 2" class="form-control" id="CantTransferencia2Balcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Plazo 3:</label>
+                            <input type="text" placeholder="Plazo 3" class="form-control input-number" id="Plazo3Balcon" />
+                            <select class="form-control" id="Plazo3Balcon">
+                                <option value="value">Selecciona un plazo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Nombre banco 3:</label>
+                            <input type="text" placeholder="Nombre banco 3" class="form-control input-number" id="NombreBanco3Balcon" />
+                            <select class="form-control" id="NombreBanco3Balcon">
+                                <option value="value">Selecciona un banco</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Cant transferencia 3:</label>
+                            <input type="text" placeholder="Cant Transferencia 3" class="form-control" id="CantTransferencia3Balcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Plazo 4:</label>
+                            <input type="text" placeholder="Plazo 4" class="form-control input-number" id="Plazo4Balcon" />
+                            <select class="form-control" id="Plazo4Balcon">
+                                <option value="value">Selecciona un plazo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Nombre banco 4:</label>
+                            <input type="text" placeholder="Nombre banco 4" class="form-control input-number" id="NombreBanco4Balcon" />
+                            <select class="form-control" id="NombreBanco4Balcon">
+                                <option value="value">Selecciona un banco</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Cant transferencia 4:</label>
+                            <input type="text" placeholder="Cant Transferencia 4" class="form-control" id="CantTransferencia4Balcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Plazo 5:</label>
+                            <input type="text" placeholder="Plazo 5" class="form-control input-number" id="Plazo5Balcon" />
+                            <select class="form-control" id="Plazo5Balcon">
+                                <option value="value">Selecciona un plazo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Nombre banco 5:</label>
+                            <input type="text" placeholder="Nombre banco 5" class="form-control input-number" id="NombreBanco5Balcon" />
+                            <select class="form-control" id="NombreBanco5Balcon">
+                                <option value="value">Selecciona un banco</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Cant transferencia 5:</label>
+                            <input type="text" placeholder="Cant Transferencia 5" class="form-control" id="CantTransferencia5Balcon" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label class="control-label">Estatus:</label>
+                            <select class="form-control" id="EstatusBalcon">
+                                <option value="0">Selecciona</option>
+                                <option value="1">No</option>
+                                <option value="2">Si</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+                @*<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>Fecha venta</label>
+                            <input type="text" class="form-control" id="FechaVentaBalcon" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div id="BalconCat"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>*@
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="modalBalcon" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBalcon" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserBalcon" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordBalcon" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Status sale:</label>
+                                    <select class="form-control" id="StatusSaleBalcon"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidateBalcon" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModalSucursalesB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="modal-title">Seleccione una sucursal</h3>
+            </div>
+
+            <div class="modal-body modal-body1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive">
+                            <thead class="btn-primary">
+                                <tr id="headerTableSucursal">
+                                    <th class="small">SIRH</th>
+                                    <th class="small">NOMBRE DISP</th>
+                                    <th class="small">DIVISION</th>
+                                    <th class="small">DIRECCION</th>
+                                    <th class="small">DOMICILIO</th>
+                                    <th class="small">COLONIA</th>
+                                    <th class="small">CALLE 1</th>
+                                    <th class="small">CALLE 2</th>
+                                    <th class="small">DELEG_MUNIC</th>
+                                    <th class="small">LUN - VIE AP</th>
+                                    <th class="small">LUN - VIE CIE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTableSucB"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+

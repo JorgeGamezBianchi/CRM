@@ -1,0 +1,24 @@
+﻿#MontoMaximo24CPC, #Pago24CPC, #PlazoCPC, #Linea24CNC, #Pago24CNC
+{
+    background-color: #ccffe6;
+}
+
+#MontoMaximo36CPC, #Pago36CPC, #Plazo36CPC, #Linea36CNC, #Pago36CNC
+{
+    background-color: #f1dae6;
+}
+
+#MontoMaximo48CPC, #Pago48CPC, #Plazo48CPC, #Linea48CNC, #Pago48CNC
+{
+    background-color: #99ccff;
+}
+
+#MontoMaximo60CPC, #Pago60CPC, #Plazo60CPC, #Linea60CNC, #Pago60CNC
+{
+    background-color: #e0e0eb;
+}
+
+#MontoPromesaCNC, #PlazoCNC, #TasaCNC, #MontoPromesaCPC, #TasaCPC
+{
+    background-color: #ffff99;
+}

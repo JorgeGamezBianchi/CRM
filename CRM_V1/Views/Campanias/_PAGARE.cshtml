@@ -1,0 +1,255 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Pagare.js")
+<div class="panel panel-primary" id="PAGARE">
+    <div class="panel-heading" id="HeadingPagare">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                PAGARE
+                @*<button class="boton-guardar" id="OpenScriptPagare" title="Abrir script de pagare" hidden>
+                    <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoPagare"></span>
+                    &nbsp;
+                    <label id="lblPaga"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_pagare" onchange="check_val_paga"/>
+
+                    <label id="CalificadoPaga" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifPaga">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarPagare" data-toggle="modal" data-target="#modalPagare" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+                    <button class="boton-guardar" id="SavePagare">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse11" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconSix"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="collapse11" class="collapse panel-collapse">
+        <form action="/" method="post">
+
+            <div class="panel-body" id="panelCalificacionPaga">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboPagaCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelPagare" hidden>
+                <input type="hidden" id="IdPagare" />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control" id="FolioPagare" disabled />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione tipo de venta:</label>
+                                <select class="form-control" id="selectVenta_Pagare" onchange="CambiarTipoVenta_Pagare()">
+                                    <option selected value="0">Seleccione...</option>
+                                    <option value="App">App</option>
+                                    <option value="Sucursal">Sucursal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Div_Suc_Pagare_1" hidden>
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Estado:</label>
+                                    <select class="form-control" id="EstadoSucursalPagare">
+                                        <option value="value">Selecciona estado de sucursal</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Municipio:</label>
+                                    <select class="form-control" id="MunicipioSucursalPagare">
+                                        <option value="value">Selecciona municipio de sucursal</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Sucursal:</label>
+                                    <input type="text" placeholder="Sucursal" class="form-control" id="NMSucursalPagare" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="Div_Suc_Pagare_2" hidden>
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Número sucursal:</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Numero Sucursal" class="form-control" id="NumeroSucursalPagare" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-info" type="button" id="DetalleSucursalPAGARE">
+                                                <span class="glyphicon glyphicon-zoom-in"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Fecha vicita sucursal:</label>
+                                    <input type="text" placeholder="Fecha vicita sucursal" class="form-control" id="FechaVicitaSucursalPagare" readonly />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">División:</label>
+                                    <input type="text" placeholder="División" class="form-control" id="DivisionPagare" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Regional:</label>
+                                    <input type="text" placeholder="Regional" class="form-control" id="RegionalPagare" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div id="PagareCat"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPagare" tabindex="-1" role="dialog" aria-labelledby="myModalLabelPagare" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserPagare" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordPagare" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Status sale:</label>
+                                    <select class="form-control" id="StatusSalePagare"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidatePagare" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalSucursales_Pagare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="modal-title">Seleccione una sucursal</h3>
+            </div>
+
+            <div class="modal-body modal-body1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive">
+                            <thead class="btn-primary">
+                                <tr id="headerTableSucursal">
+                                    <th class="small">SIRH</th>
+                                    <th class="small">NOMBRE DISP</th>
+                                    <th class="small">DIVISION</th>
+                                    <th class="small">DIRECCION</th>
+                                    <th class="small">DOMICILIO</th>
+                                    <th class="small">COLONIA</th>
+                                    <th class="small">CALLE 1</th>
+                                    <th class="small">CALLE 2</th>
+                                    <th class="small">DELEG_MUNIC</th>
+                                    <th class="small">LUN - VIE AP</th>
+                                    <th class="small">LUN - VIE CIE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTableSuc_Pagare"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

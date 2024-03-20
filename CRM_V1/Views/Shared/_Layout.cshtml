@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @*<link rel="stylesheet" href="sweetalert2.min.css">
+        <script src="sweetalert2.all.min.js"></script>
+        <script src="sweetalert2.min.js"></script>*@
+
+    @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script src="~/Scripts/alertify.js"></script>
+    <script type="text/javascript">
+        //override defaults
+        //alertify.defaults.transition = "slide";
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+        alertify.defaults.theme.input = "form-control";
+    </script>
+    @*<link href="~/Assets/alertify/alertify.min.css" rel="stylesheet" />
+        <link href="~/Assets/alertify/themes/default.css" rel="stylesheet" />*@
+
+
+    <title>@ViewBag.Title - MEDMarketing</title>
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    
+</body>
+</html>
+<!--C:\Users\52640\AppData\Roaming\mmm-->

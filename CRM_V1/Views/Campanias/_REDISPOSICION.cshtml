@@ -1,0 +1,267 @@
+﻿@Styles.Render("~/Content/Site.css")
+@Scripts.Render("~/Scripts/Campanias/Redisposicion.js")
+<div class="panel panel-primary" id="REDISPOSICION">
+    <div class="panel-heading" id="HeadingRedisposicion">
+        <div class="panel-title">
+            &nbsp;
+            <div class="pull-left">
+                REDISPOSICION
+                @*<button class="boton-guardar" id="OpenScriptRedisposicion" title="Abrir script de redisposicion" hidden>
+                    <span class="glyphicon glyphicon-open-file" style="color: white"></span>
+                </button>*@
+            </div>
+            <div class="pull-right">
+                <h4 class="panel-title">
+                    <span style="color: white" id="EstadoRedisposicion"></span>
+                    &nbsp;
+                    <label id="lblRedis"> ES VENTA? :</label>
+                    <input type="checkbox" id="check_redis" onchange="check_val_redis()" />
+
+                    <label id="CalificadoRedis" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Calificado"></span>
+                    </label>
+                    <button class="boton-guardar" id="SaveCalifRedis">
+                        <span class="glyphicon glyphicon-list-alt" style="color: white" title="Calificar"></span>
+                    </button>
+                    <button class="boton-guardar" id="ValidarRedisposicion" data-toggle="modal" data-target="#modalRedisposicion" hidden>
+                        <span class="glyphicon glyphicon-ok" style="color: white" title="Validar"></span>
+                    </button>
+
+                    <button class="boton-guardar" id="SaveRedisposicion">
+                        <span class="glyphicon glyphicon-floppy-disk" style="color: white" title="Guardar"></span>
+                    </button>
+                    <a data-toggle="collapse" href="#collapse7" class="pull-right" data-parent="#acordion">
+                        <span class="glyphicon glyphicon-chevron-up" id="iconSeven"></span>
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="collapse7" class="collapse panel-collapse">
+        <form action="/" method="post">
+
+            <div class="panel-body" id="panelCalificacionRedis">
+                <div class="row" id="comboCalif">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Seleccione calificacion:</label>
+                                <select class="form-control" id="comboRedisCalif"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body" id="panelRedis" hidden>
+                <input type="hidden" id="IdRedisposicion"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Folio:</label>
+                                <input type="text" placeholder="Folio" class="form-control input-number" disabled id="FolioRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">N° targeta:</label>
+                                <input type="text" placeholder="N° targeta" class="form-control input-number" id="NumeroTargetaRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Producto:</label>
+                                <input type="text" placeholder="Producto" class="form-control" id="ProductoRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea crédito:</label>
+                                <input type="text" placeholder="Línea crédito" class="form-control input-number" id="LineaCreditoRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tasa original:</label>
+                                <input type="text" placeholder="Tasa original" class="form-control" id="TasaOriginalRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Plazo crédito:</label>
+                                <input type="text" placeholder="Plazo crédito" class="form-control input-number" id="PlazoCreditoRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Monto disperión:</label>
+                                <input type="text" placeholder="Monto dispersión" class="form-control" id="MontoDisperionRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 36:</label>
+                                <input type="text" placeholder="Pago 36" class="form-control input-number" id="Pago36Redisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 48:</label>
+                                <input type="text" placeholder="Pago 48" class="form-control input-number" id="Pago48Redisposicion" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Pago 60:</label>
+                                <input type="text" placeholder="Pago 60" class="form-control input-number" id="Pago60Redisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Incremento:</label>
+                                <input type="text" placeholder="Incremento" class="form-control" id="IncrementoRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea actual:</label>
+                                <input type="text" placeholder="Línea actual" class="form-control input-number" id="LineaActualRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Línea nueva:</label>
+                                <input type="text" placeholder="Línea nueva" class="form-control" id="LineaNuevaRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Cantidad disponer:</label>
+                                <input type="text" placeholder="Cantidad disponer" class="form-control" id="CantidadDisponerRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Últimos 3 meses utilizando bancanet:</label>
+                                <input type="text" placeholder="Últimos 3 meses utilizando bancanet" class="form-control input-number" id="Ultimos3MesesRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label class="control-label">Tiene TDC citibanamex:</label>
+                                <input type="text" placeholder="Tiene TDC citibanamex" class="form-control input-number" id="TieneTDCCitibanamexRedisposicion" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div id="RedisposicionCat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRedisposicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabelRedisposicion" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar como validador</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="UserName">User name:</label>
+                                    <input type="text" class="form-control" id="UserRedisposicion" placeholder="Enter your user name" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Password:</label>
+                                    <input type="password" class="form-control" id="PasswordRedisposicion" placeholder="Enter your user password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="Password">Status sale:</label>
+                                    <select class="form-control" id="StatusSaleRedisposicion"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="ValidateRedisposicion" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

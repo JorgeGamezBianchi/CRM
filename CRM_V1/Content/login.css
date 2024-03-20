@@ -1,0 +1,84 @@
+﻿.content {
+    border-radius: 15px;
+    background-color: #166b96;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; /* requerido para alineación horizontal */
+    display: inline-block;
+    padding: 10px;
+    height: 380px; /* Should be removed. Only for demonstration */
+    width: 40%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.background {
+    background-color: #a8ddf8;
+}
+
+.text-title {
+    color: white;
+}
+
+
+.inputs {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 14px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+input[type=submit]:hover, input[type=button]:hover {
+    background-color: #37afd8;
+}
+
+input[type=submit], input[type=button] {
+    cursor: pointer;
+    width: 70%;
+    background-color: #46c6f2;
+    color: white;
+    margin: 8px 0;
+    padding: 14px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+a:link, a:visited {
+    cursor: pointer;
+    width: 70%;
+    background-color: #a8ddf8;
+    color: #337ab7;
+    margin: 8px 0;
+    padding: 14px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+a:hover {
+    color: #337ab7;
+    background-color: #37afd8;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    background-color: #37afd8;
+    text-decoration: none;
+}
